@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Invitados</title>
+    <link rel="stylesheet" href="./css/invitados.css" />
+
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+  </head>
+  <body>
+    <h1>Lista de Invitados</h1>
+
+    <div id="loading" class="loading" style="display: none">Cargando...</div>
+
+    <div class="container" id="container">
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Buscar invitado..."
+          onkeyup="filtrarInvitados()"
+        />
+      </div>
+      <div class="add-invitado-container">
+        <h2>Agregar nuevo invitado</h2>
+        <form id="formInvitado">
+          <input
+            type="text"
+            id="nombreInvitado"
+            class="input-field"
+            placeholder="Nombre del invitado"
+          />
+          <input
+            type="number"
+            id="numeroInvitados"
+            class="input-field"
+            placeholder="Número de acompañantes"
+          />
+          <button type="button" onclick="agregarInvitado()" class="add-btn">
+            Agregar Invitado
+          </button>
+        </form>
+      </div>
+      <br />
+
+      <div id="listaInvitados"></div>
+    </div>
+
+    <div class="footer">
+      <p>&copy; 2024 MayanPlus</p>
+    </div>
+    <script type="module" src="./scriptsInvitados.js"></script>
+  </body>
+</html>

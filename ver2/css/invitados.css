@@ -1,0 +1,163 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 50px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.search-input {
+  padding: 10px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.invitado-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: transform 0.2s;
+}
+
+.invitado-card:hover {
+  transform: scale(1.02);
+}
+
+.invitado-card h3 {
+  margin: 0;
+  color: #4caf50;
+}
+
+.invitado-card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.copy-btn {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+.copy-btn:hover {
+  background-color: #45a049;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  color: #888;
+}
+
+/* Estilo para la palomita (✓) cuando el botón cambia */
+.copy-btn.paloma::before {
+  content: "✓ ";
+}
+
+.add-invitado-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.add-invitado-container h2 {
+  color: #4caf50;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.input-field {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.add-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.add-btn:hover {
+  background-color: #45a049;
+}
+
+.edit-btn {
+  background-color: #ff9800;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.edit-btn:hover {
+  background-color: #e68a00;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+.loading {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+}
