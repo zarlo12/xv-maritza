@@ -3,9 +3,13 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lista de Invitados</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#6366f1" />
+  <title>Lista de Invitados - XV Años</title>
   <link rel="stylesheet" href="./css/invitados.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
@@ -13,30 +17,117 @@
 </head>
 
 <body>
-  <h1>Lista de Invitados</h1>
-
-  <div id="loading" class="loading" style="display: none">Cargando...</div>
-
-  <div class="container" id="container">
-    <div class="search-container">
-      <input type="text" id="searchInput" class="search-input" placeholder="Buscar invitado..."
-        onkeyup="filtrarInvitados()" />
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <h1 class="header-title">✨ Gestión de Invitados</h1>
+      <p class="header-subtitle">XV Años de Maritza</p>
     </div>
-    <div class="add-invitado-container">
-      <h2>Agregar nuevo invitado</h2>
-      <form id="formInvitado">
-        <input type="text" id="nombreInvitado" class="input-field" placeholder="Nombre del invitado" />
-        <input type="number" id="numeroInvitados" class="input-field" placeholder="Número de acompañantes" />
-        <button type="button" onclick="agregarInvitado()" class="add-btn">
-          Agregar Invitado
-        </button>
-      </form>
-    </div>
-    <br />
+  </header>
 
-    <div id="listaInvitados"></div>
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay" style="display: none">
+    <div class="spinner-container">
+      <div class="spinner"></div>
+      <p class="loading-text">Cargando...</p>
+    </div>
   </div>
 
+  <!-- Main Container -->
+  <div class="container" id="container">
+
+    <!-- Estadísticas -->
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div class="stat-info">
+          <div class="stat-value" id="totalInvitados">0</div>
+          <div class="stat-label">Invitados</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎉</div>
+        <div class="stat-info">
+          <div class="stat-value" id="totalAsistentes">0</div>
+          <div class="stat-label">Asistentes</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Búsqueda -->
+    <div class="search-container">
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nombre..."
+          autocomplete="off" />
+        <span class="clear-search" id="clearSearch" style="display: none;">✖</span>
+      </div>
+    </div>
+
+    <!-- Lista de Invitados -->
+    <div class="invitados-section">
+      <h2 class="section-title">📋 Lista de Invitados</h2>
+      <div id="listaInvitados" class="lista-invitados"></div>
+      <div id="emptyState" class="empty-state" style="display: none;">
+        <div class="empty-icon">📭</div>
+        <h3>No hay invitados</h3>
+        <p>Toca el botón + para agregar tu primer invitado</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAB - Floating Action Button -->
+  <button class="fab" id="fabButton" title="Agregar invitado">
+    <span class="fab-icon">+</span>
+  </button>
+
+  <!-- Modal Agregar Invitado -->
+  <div id="addInvitadoModal" class="modal">
+    <div class="modal-content modal-form">
+      <div class="modal-header">
+        <span class="modal-icon">✨</span>
+        <h3 class="modal-title">Agregar Invitado</h3>
+        <button class="modal-close" id="closeAddModal">✖</button>
+      </div>
+      <form id="formInvitado" class="form-invitado">
+        <div class="input-group">
+          <label for="nombreInvitado" class="input-label">Nombre completo</label>
+          <input type="text" id="nombreInvitado" class="input-field" placeholder="Ej: María González" autocomplete="off"
+            required />
+        </div>
+        <div class="input-group">
+          <label for="numeroInvitados" class="input-label">Número de asistentes</label>
+          <input type="number" id="numeroInvitados" class="input-field" placeholder="¿Cuántas personas?" min="1"
+            max="20" required />
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="modal-btn modal-btn-cancel" id="cancelAddInvitado">Cancelar</button>
+          <button type="submit" class="modal-btn modal-btn-confirm">
+            <span class="btn-icon">✨</span>
+            <span class="btn-text">Agregar</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de Confirmación -->
+  <div id="confirmModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="modal-icon">⚠️</span>
+        <h3 class="modal-title" id="modalTitle">¿Estás seguro?</h3>
+      </div>
+      <p class="modal-message" id="modalMessage">Esta acción no se puede deshacer.</p>
+      <div class="modal-actions">
+        <button class="modal-btn modal-btn-cancel" id="modalCancel">Cancelar</button>
+        <button class="modal-btn modal-btn-confirm" id="modalConfirm">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div id="toastContainer" class="toast-container"></div>
 
   <script type="module" src="./scriptsInvitados.js"></script>
 </body>
