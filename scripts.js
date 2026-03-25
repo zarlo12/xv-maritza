@@ -137,12 +137,12 @@ document
 //     enviarWhatsAppForm(nombre_form, anecdota_form, deseos_form);
 //   });
 
-document.addEventListener("visibilitychange", function () {
-  const audio = document.getElementById("audio-33769-1");
-  console.log("🚀 ~ audio:", audio);
-  if (document.visibilityState === "hidden") {
-    audio.pause();
-  } else if (document.visibilityState === "visible") {
-    audio.play();
-  }
-});
+// document.addEventListener("visibilitychange", function () {
+//   const audio = document.getElementById("audio-33769-1");
+//   console.log("🚀 ~ audio:", audio);
+//   if (document.visibilityState === "hidden") {
+//     audio.pause();
+//   } else if (document.visibilityState === "visible") {
+//     audio.play();
+//   }
+// });
