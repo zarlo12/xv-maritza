@@ -87,13 +87,13 @@ Soy *${nombre}*
 
 Lamentablemente no podré asistir a los XV años de Maritza 😔
 
-Les deseo una celebración increíble 💜✨`;
+Les deseo una celebración increíble 🩵✨`;
   }
   // Asistirá con 1 persona
   else if (numeroInvitados == "1" || numeroInvitados == 1) {
     mensaje = `¡Hola! 👋
 
-Soy *${nombre}* y confirmo mi asistencia a los XV años de Maritza 💜
+Soy *${nombre}* y confirmo mi asistencia a los XV años de Maritza 🩵
 
 ✅ *Asistiré*
 
@@ -103,7 +103,7 @@ Soy *${nombre}* y confirmo mi asistencia a los XV años de Maritza 💜
   else {
     mensaje = `¡Hola! 👋
 
-Soy *${nombre}* y confirmo mi asistencia a los XV años de Maritza 💜
+Soy *${nombre}* y confirmo mi asistencia a los XV años de Maritza 🩵
 
 ✅ *Número de asistentes:* ${numeroInvitados} personas
 
