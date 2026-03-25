@@ -105,15 +105,18 @@ function enviarWhatsAppForm(nombre_form, anecdota_form, deseos_form) {
 
 document
   .getElementById("btn_send_counterzz")
-  .addEventListener("click", function () {
+  .addEventListener("click", function (e) {
+    e.preventDefault(); // Prevenir envío del formulario
+
     const nombreInvitado =
       document.getElementById("nombreInvitado").textContent;
     const numeroInvitados = document.getElementById("listaInvitados").value;
+    console.log("🚀 ~ numeroInvitados:", numeroInvitados);
 
     if (nombreInvitado == "Invitado no encontrado.") {
       return alert("Invitado no registrado.");
     }
-    if (numeroInvitados) {
+    if (numeroInvitados && numeroInvitados != "-1" && numeroInvitados != -1) {
       enviarWhatsApp(nombreInvitado, numeroInvitados);
     } else {
       return alert("Por favor, selecciona el número de asistentes.");
