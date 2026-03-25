@@ -25,7 +25,7 @@ function generarCodigoFijo(nombre) {
   return Math.abs(hash).toString(36).substring(0, 6).toUpperCase(); // Convertir el hash a base 36 y truncar
 }
 
-const baseUrl = "https://mis-xv-dulce.vercel.app";
+const baseUrl = "https://xv-maritza.vercel.app";
 
 // Función para mostrar y ocultar el indicador de carga
 function mostrarCargando(mostrar) {
@@ -47,7 +47,7 @@ async function generarListaInvitados(filtro = "") {
 
   // Obtener invitados de Firestore
   const querySnapshot = await db
-    .collection("invitadosXVDULCE2323")
+    .collection("invitadosXVMaritza2026")
     .orderBy("fechaCreacion", "desc")
     .get();
   const invitados = querySnapshot.docs.map((doc) => ({
@@ -57,8 +57,8 @@ async function generarListaInvitados(filtro = "") {
 
   const invitadosFiltrados = invitados.filter((invitado) =>
     normalizarTexto(invitado.invitado.toLowerCase()).includes(
-      filtro.toLowerCase()
-    )
+      filtro.toLowerCase(),
+    ),
   );
 
   invitadosFiltrados.forEach((invitado) => {
@@ -182,7 +182,7 @@ window.agregarInvitado = async function () {
     const codigo = generarCodigoFijo(nombreInvitado);
     mostrarCargando(true);
     // Guardar en Firestore
-    await db.collection("invitadosXVDULCE2323").add({
+    await db.collection("invitadosXVMaritza2026").add({
       invitado: nombreInvitado,
       numeroInvitados: parseInt(numeroInvitados),
       codigo,
@@ -201,11 +201,11 @@ window.agregarInvitado = async function () {
 // Función para eliminar un invitado
 window.eliminarInvitado = async function (id) {
   const confirmacion = confirm(
-    "¿Estás seguro de que deseas eliminar este invitado?"
+    "¿Estás seguro de que deseas eliminar este invitado?",
   );
   if (confirmacion) {
     mostrarCargando(true);
-    await db.collection("invitadosXVDULCE2323").doc(id).delete();
+    await db.collection("invitadosXVMaritza2026").doc(id).delete();
     alert("Invitado eliminado con éxito");
     generarListaInvitados(); // Refrescar la lista
   }
@@ -215,14 +215,14 @@ window.eliminarInvitado = async function (id) {
 window.editarInvitado = async function (id) {
   const nombreNuevo = prompt("Introduce el nuevo nombre del invitado:");
   const numeroAcompanantesNuevo = prompt(
-    "Introduce el nuevo número de acompañantes:"
+    "Introduce el nuevo número de acompañantes:",
   );
 
   if (nombreNuevo && numeroAcompanantesNuevo) {
     const codigo = generarCodigoFijo(nombreInvitado);
     mostrarCargando(true);
     await db
-      .collection("invitadosXVDULCE2323")
+      .collection("invitadosXVMaritza2026")
       .doc(id)
       .update({
         invitado: nombreNuevo,
@@ -241,7 +241,7 @@ window.editarInvitado = async function (id) {
 //     for (const invitado of invitadosImportador) {
 //       const codigo = generarCodigoFijo(invitado.invitado); // Generar código
 
-//       await db.collection("invitadosXVDULCE2323").add({
+//       await db.collection("invitadosXVMaritza2026").add({
 //         invitado: invitado.invitado,
 //         numeroInvitados: invitado.numeroInvitados,
 //         codigo: codigo,

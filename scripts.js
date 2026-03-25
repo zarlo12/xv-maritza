@@ -72,7 +72,7 @@ if (invitado) {
 function enviarWhatsApp(nombre, numeroInvitados) {
   console.log("🚀 ~ enviarWhatsApp ~ numeroInvitados:", numeroInvitados);
   console.log("🚀 ~ enviarWhatsApp ~ nombre:", nombre);
-  const numeroTelefono = "+5214731642105"; // Reemplaza con el número de teléfono al que deseas enviar el mensaje
+  const numeroTelefono = "+5219831146444"; // Reemplaza con el número de teléfono al que deseas enviar el mensaje
   let mensaje = `Hola soy ${nombre} Confirmo mi invitación con el número total de asistentes: ${numeroInvitados}`;
   if (numeroInvitados == "No podra asistir") {
     mensaje = `Hola soy ${nombre}, confirmo que no podre asistir.`;
@@ -81,7 +81,7 @@ function enviarWhatsApp(nombre, numeroInvitados) {
     mensaje = `Hola soy ${nombre}, confirmo mi invitación.`;
   }
   const url = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${encodeURIComponent(
-    mensaje
+    mensaje,
   )}`;
   window.open(url, "_blank");
 }
@@ -89,14 +89,14 @@ function enviarWhatsApp(nombre, numeroInvitados) {
 function enviarWhatsAppForm(nombre_form, anecdota_form, deseos_form) {
   // console.log("🚀 ~ enviarWhatsApp ~ numeroInvitados:", numeroInvitados);
   // console.log("🚀 ~ enviarWhatsApp ~ nombre:", nombre);
-  const numeroTelefono = "+5214731642105"; // Reemplaza con el número de teléfono al que deseas enviar el mensaje
+  const numeroTelefono = "+5219831146444"; // Reemplaza con el número de teléfono al que deseas enviar el mensaje
   let mensaje = `Hola soy ${nombre_form},\nConfirmó mi invitación. `;
 
   mensaje = mensaje + "\n\n*Anecdota juntos:* " + anecdota_form;
   mensaje = mensaje + "\n\n*Palabras o buenos deseos:* " + deseos_form;
 
   const url = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${encodeURIComponent(
-    mensaje
+    mensaje,
   )}`;
   window.open(url, "_blank");
 }
