@@ -14,7 +14,7 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 // Obtener invitados de Firestore
-const querySnapshot = await db.collection("invitadosXVDULCE2323").get();
+const querySnapshot = await db.collection("invitadosXVMaritza2026").get();
 const invitados = querySnapshot.docs.map((doc) => ({
   id: doc.id,
   ...doc.data(),
