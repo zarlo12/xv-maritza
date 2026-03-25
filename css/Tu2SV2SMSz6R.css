@@ -481,11 +481,11 @@ h1.entry-title {
   > .elementor-element-populated {
   padding: 5px;
 }
-.elementor-column-gap-default
+/* .elementor-column-gap-default
   > .elementor-column
   > .elementor-element-populated {
   padding: 10px;
-}
+} */
 .elementor-column-gap-extended
   > .elementor-column
   > .elementor-element-populated {
