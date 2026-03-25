@@ -72,14 +72,44 @@ if (invitado) {
 function enviarWhatsApp(nombre, numeroInvitados) {
   console.log("🚀 ~ enviarWhatsApp ~ numeroInvitados:", numeroInvitados);
   console.log("🚀 ~ enviarWhatsApp ~ nombre:", nombre);
-  const numeroTelefono = "+5219831146444"; // Reemplaza con el número de teléfono al que deseas enviar el mensaje
-  let mensaje = `Hola soy ${nombre} Confirmo mi invitación con el número total de asistentes: ${numeroInvitados}`;
-  if (numeroInvitados == "No podra asistir") {
-    mensaje = `Hola soy ${nombre}, confirmo que no podre asistir.`;
+  const numeroTelefono = "+5219831146444";
+  let mensaje = "";
+
+  // No asistirá
+  if (
+    numeroInvitados == "0" ||
+    numeroInvitados == 0 ||
+    numeroInvitados == "No podra asistir"
+  ) {
+    mensaje = `¡Hola! 👋
+
+Soy *${nombre}*
+
+Lamentablemente no podré asistir a los XV años de Maritza 😔
+
+Les deseo una celebración increíble 💜✨`;
   }
-  if (numeroInvitados == 0) {
-    mensaje = `Hola soy ${nombre}, confirmo mi invitación.`;
+  // Asistirá con 1 persona
+  else if (numeroInvitados == "1" || numeroInvitados == 1) {
+    mensaje = `¡Hola! 👋
+
+Soy *${nombre}* y confirmo mi asistencia a los XV años de Maritza 💜
+
+✅ *Asistiré*
+
+¡Nos vemos el 11 de Abril! 🎉`;
   }
+  // Asistirá con múltiples personas
+  else {
+    mensaje = `¡Hola! 👋
+
+Soy *${nombre}* y confirmo mi asistencia a los XV años de Maritza 💜
+
+✅ *Número de asistentes:* ${numeroInvitados} personas
+
+¡Nos vemos el 11 de Abril! 🎉`;
+  }
+
   const url = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${encodeURIComponent(
     mensaje,
   )}`;
