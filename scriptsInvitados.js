@@ -377,10 +377,10 @@ async function agregarInvitado(e) {
     });
 
     showToast(`¡Invitado "${nombreInvitado}" agregado con éxito!`, "success");
-    
+
     // Cerrar modal y limpiar formulario
     closeAddInvitadoModal();
-    
+
     await generarListaInvitados();
   } catch (error) {
     console.error("Error agregando invitado:", error);
